@@ -1,0 +1,66 @@
+  <p id="notice"><%= notice %></p>
+  <div class="row">
+    <div class="col-md-12">
+      <div class= "container">
+        <p>
+          <div class="header">
+            <h1>
+              <div id="name">
+                <%= @group.name %>
+              </div>
+              <div>
+
+              </div>
+            </h1>
+          </div>
+        </div>
+      </p>
+    </div>
+  </div>
+</div>
+<p>
+  <div class="group-details container">
+    <div class="row">
+      <div class="col-md-8" align="right">
+        <p><%=image_tag "Rama_pic.jpg", class: "img-circle"%>
+          <%=image_tag "keith_dent_profile.jpg", class: "img-circle"%>
+          <%=image_tag "Andy-Kawa-web1-140x140.jpg", class: "img-circle"%></p>
+          <p><%=image_tag "image_MBA_candidate.jpeg", class: "img-circle"%>
+            <%=image_tag "blackwomanradio.jpeg", class: "img-circle"%>
+            <%=image_tag "Syreeta-McFadden.jpg", class: "img-circle"%></p>
+          </div>
+          <div class="col-md-4">
+            <div id= "description"</div>
+              <%= @group.description %>
+            </p>
+            <p>
+              <span id= "amount">
+                <%= @group.amount %>
+              </span>
+              <span id= "currency">
+               <%= @group.currency %>
+             </span>
+           </p>
+           <p>
+            <span id= "period">
+              <%= @group.period %>
+            </span>
+            <span id= "period type">
+              <%= @group.period_type %>
+            </span>
+          </p>
+          <p>
+            <div class= "Start date"></div>
+            <%= @group.start_date %>
+          </p>
+          <div class="progress">
+            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+              <span class="sr-only">20% Complete (success)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%= link_to 'Edit', edit_group_path(@group) %>
