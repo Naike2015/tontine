@@ -26,6 +26,12 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
+gem 'omniauth-facebook'
+
+gem 'activeadmin', git: 'https://github.com/activeadmin/activeadmin'
+
+# Figaro to protect API keys
+gem 'figaro'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
