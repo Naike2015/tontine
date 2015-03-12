@@ -1,28 +1,31 @@
-<header>
-  <title>Start your Tontine</title>
-  <%= stylesheet_link_tag "application" %>
-</header>
-<%= simple_form_for(@group) do |f| %>
-<% if @group.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
+<div class="container">
+  <header>
+    <title>Start your Tontine</title>
+    <%= stylesheet_link_tag "application" %>
+  </header>
+  <%= simple_form_for(@group) do |f| %>
+  <% if @group.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
 
-  <ul>
-    <% @group.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
-</div>
-<% end %>
+    <ul>
+      <% @group.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
 
-<%= f.input :name %>
-<%= f.input :description %>
-<%= f.input :amount %>
-<%= f.input :currency %>
-<%= f.input :period %>
-<%= f.input :period_type %>
-<%= f.input :start_date %>
-<div class="actions">
-  <%= f.submit %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :amount %>
+  <%= f.input :currency %>
+  <%= f.input :period %>
+  <%= f.input :period_type %>
+  <%= f.input :start_date %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  <% end %>
 </div>
-<% end %>
+

@@ -1,13 +1,26 @@
 Rails.application.routes.draw do
+
+  get 'welcome/index'
+
   ActiveAdmin.routes(self)
-  devise_for :users
-  resources :groups
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks", sessions: "users/sessions",
+      registrations: "users/registrations"}
+
+  resources :users, only: [:show]
+  resources :groups do
+    member do
+      get 'invitations', to: "invitations#show"
+    end
+    member do
+      post 'invitations', to: "invitations#create"
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'groups#index'
+  root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

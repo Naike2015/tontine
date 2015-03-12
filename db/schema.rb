@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150304174717) do
+ActiveRecord::Schema.define(version: 20150309140752) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -43,6 +43,30 @@ ActiveRecord::Schema.define(version: 20150304174717) do
 
   add_index "groups", ["user_id"], name: "index_groups_on_user_id"
 
+  create_table "invitations", force: :cascade do |t|
+    t.string   "status"
+    t.string   "email"
+    t.string   "invitation_source"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "name"
+    t.integer  "group_id"
+  end
+
+  add_index "invitations", ["group_id"], name: "index_invitations_on_group_id"
+
+  create_table "participants", force: :cascade do |t|
+    t.string   "contribution_order"
+    t.boolean  "founder",            default: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.integer  "user_id"
+    t.integer  "group_id"
+  end
+
+  add_index "participants", ["group_id"], name: "index_participants_on_group_id"
+  add_index "participants", ["user_id"], name: "index_participants_on_user_id"
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -61,6 +85,12 @@ ActiveRecord::Schema.define(version: 20150304174717) do
     t.string   "last_name"
     t.string   "mobile"
     t.boolean  "admin",                  default: false, null: false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "picture"
+    t.string   "name"
+    t.string   "token"
+    t.datetime "token_expiry"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

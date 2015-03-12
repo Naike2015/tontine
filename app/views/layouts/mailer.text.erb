@@ -1,0 +1,4 @@
+<%= yield %>
+Hi <%= @user.name %>
+user = User.first
+UserMailer.welcome(user).deliver

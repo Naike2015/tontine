@@ -1,0 +1,46 @@
+Invitations
+
+
+1. Route 'groups/3/invitations'
+
+    resources :groups do
+    member do
+      get 'invitations', to: "invitations#show_invitations"
+    end
+    member do
+      post 'invitations', to: "invitations#create"
+    end
+  end
+
+2. InvitationsController
+    rails g controller Invitations
+
+3. Methode invites: recupérer nom + email, rediriger group
+
+    def retrieve
+    @user = User.new
+
+     respond_to do |format|
+      if @user.save
+        format.html { redirect_to @group, notice: 'User was successfully created.' }
+        format.json { render :show, status: :created, location: @group }
+      else
+        format.html { render :new }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+
+4. Ajouter group:references + name à la table invitations
+
+    rails g migration AddNameToInvitations name:string group:references
+
+5. Sur la page du groupe montrer les invitations
+
+class GroupsController < ApplicationController
+
+  def show
+     @invitation = Invitation.find(param[:id])
+     @invitation.save
+  end
+
+

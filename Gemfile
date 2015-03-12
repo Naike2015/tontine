@@ -16,6 +16,9 @@ gem 'bootstrap-sass', '~>3.3.3'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+gem "font-awesome-rails"
+#Twilio Gem
+gem 'twilio-ruby', '~> 3.12'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -46,16 +49,12 @@ gem 'puma', group: :production
 # gem 'capistrano-rails', group: :development
 gem 'simple_form'
 group :development, :test do
+gem "letter_opener", group: :development
 # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug'
-
-
-
-
-
+gem 'byebug'
 # Access an IRB console on exception pages or by using <%= console %> in viewsgem 'web-console', '~> 2.0'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+gem 'spring'
 end
 

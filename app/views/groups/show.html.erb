@@ -1,3 +1,4 @@
+  <div class="container">
   <p id="notice"><%= notice %></p>
   <div class="row">
     <div class="col-md-12">
@@ -12,7 +13,9 @@
 
               </div>
             </h1>
+            <% if @group.user %>
             <h2>created by <%= @group.user.email %></h2>
+            <% end %>
           </div>
         </div>
       </p>
@@ -30,6 +33,18 @@
             <%=image_tag "blackwomanradio.jpeg", class: "img-circle"%>
             <%=image_tag "Syreeta-McFadden.jpg", class: "img-circle"%></p>
           </div>
+          <div class="invitation controller">
+            <div class="row">
+            <div class="col-md-8" align="right">
+          <tbody>
+            <% @group.invitations.each do |user| %>
+              <tr>
+                <th><%= user.name %></th>
+              </tr>
+            <% end %>
+          </tbody>
+        </div>
+        </div>
           <div class="col-md-4">
             <div id= "description"</div>
               <%= @group.description %>
@@ -65,3 +80,5 @@
   </div>
 
   <%= link_to 'Edit', edit_group_path(@group) %>
+  <%= link_to 'Invitations', invitations_group_path(@group) %>
+</div>
